@@ -6,6 +6,6 @@ Here's what awaits you:
 
 Timeless Timekeeper: A clear, unobtrusive clock keeps you on track, ensuring each pomodoro tick tock seamlessly into the next.
 Use any song you want: Pause, rewind, or skip forward - customize your sonic journey to match your mood. We support mp3, ogg, and wav.
-Minimalist Design: Uncluttered and calming, Studyclock lets your focus reign supreme. No pop-ups, no ads, just you, the music, and the pursuit of knowledge. If you use YouTube to find a song, you might have ads, which is why I have a song built in.
+Minimalist Design: Uncluttered and calming, Studyclock lets your focus reign supreme. No pop-ups, no ads, just you, the music, and the pursuit of knowledge. 
 
 Credits to xyqn for the idea. 
