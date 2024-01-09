@@ -1,5 +1,5 @@
-
-# Dive into Deep Focus with StudyClock: Your Study Oasis for Productive Pomodoros
+# StudyClock
+## Dive into Deep Focus with StudyClock: Your Study Oasis for Productive Pomodoros
 Craving an immersive study haven? Look no further than StudyClock, your portal to focused sessions fueled by song vibes. This sleek website is your one-stop shop for effortless concentration.
 
 Here's what awaits you:
