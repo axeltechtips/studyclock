@@ -9,3 +9,6 @@ Use any song you want: Pause, rewind, or skip forward - customize your sonic jou
 Minimalist Design: Uncluttered and calming, Studyclock lets your focus reign supreme. No pop-ups, no ads, just you, the music, and the pursuit of knowledge. 
 
 Credits to xyqn for the idea. 
+
+Our possible plans:
+Allowing you to sync your Spotify or YouTube account to start listening to your preferred tunes.
