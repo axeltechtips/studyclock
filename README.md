@@ -8,10 +8,14 @@ Timeless Timekeeper: A clear, unobtrusive clock keeps you on track, ensuring eac
 Use any song you want: Pause, rewind, or skip forward - customize your sonic journey to match your mood. We support mp3, ogg, and wav.
 Minimalist Design: Uncluttered and calming, Studyclock lets your focus reign supreme. No pop-ups, no ads, just you, the music, and the pursuit of knowledge. 
 
-Credits to xyqn for the idea. 
+![](demo.gif)
 
 ## Our possible plans:
 Allowing you to sync your Spotify or YouTube account to start listening to your preferred tunes.
 
 # What we need to fix 
 We need to fix the moving backgrounds as it does not work, and clean the code.
+
+## Credits
+xyqn for the original inspiration
+and you for using this website!
