@@ -14,5 +14,4 @@ Credits to xyqn for the idea.
 Allowing you to sync your Spotify or YouTube account to start listening to your preferred tunes.
 
 # What we need to fix 
-Moving backgrounds 
-Clean Code
+We need to fix the moving backgrounds as it does not work, and clean the code.
