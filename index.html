@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customizable Gradient Background with Real-Time Clock and Music</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Caveat:wght@700&family=Open+Sans:wght@400;700&family=Arial:wght@400;700&family=Times+New+Roman:wght@400;700&family=Verdana:wght@400;700&family=Courier+New:wght@400;700&family=Impact:wght@400;700&family=Georgia:wght@400;700&family=Trebuchet+MS:wght@400;700&family=Palatino+Linotype:wght@400;700&family=Tahoma:wght@400;700&display=swap">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2.5em;
+      font-family: 'Roboto, sans-serif';
+      animation: moveBackground 10s linear infinite alternate; /* Decreased duration to 10s */
+      background: linear-gradient(to right, #8e44ad, #3498db);
+      background-size: 200% 100%;
+      background-position: 0% 50%; /* Initial position */
+    }
+
+    .move-animation {
+      animation: moveBackground 10s linear infinite alternate; /* Decreased duration to 10s */
+    }
+
+    @keyframes moveBackground {
+      0% {
+        background-position: 0% 50%;
+      }
+      100% {
+        background-position: 100% 50%;
+      }
+    }
+
+    audio {
+      margin-top: 30px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .file-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    input {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+      padding: 8px 12px;
+      border: 1px solid #fff;
+      border-radius: 5px;
+      background-color: #333;
+      color: #fff;
+      font-size: 0.8em;
+    }
+
+    button {
+      font-size: 0.8em;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    /* Additional Styles */
+    #toggleTimeFormat {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 5px 10px;
+    }
+
+    #randomGradientBtn {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      padding: 5px 10px;
+      font-size: 0.8em;
+    }
+
+    #clock {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="move-animation">
+  <button id="toggleTimeFormat" onclick="toggleTimeFormat()">Toggle 12/24hr</button>
+  <div id="clock"></div>
+
+  <!-- Audio Element for User-Selected File -->
+  <audio controls id="userAudio">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <!-- File input container -->
+  <div class="file-container">
+    <input type="file" id="fileInput" accept=".mp3, .ogg, .wav" />
+    <label for="fileInput">Choose File</label>
+  </div>
+
+  <!-- Random gradient button -->
+  <button id="randomGradientBtn" onclick="setRandomGradient()">Random Gradient</button>
+
+  <script>
+    let is24HourFormat = false;
+    let currentFontIndex = 0;
+    const fontArray = [
+      'Roboto, sans-serif',
+      'Caveat, cursive',
+      'Open Sans, sans-serif',
+      'Arial, sans-serif',
+      'Times New Roman, serif',
+      'Verdana, sans-serif',
+      'Courier New, monospace',
+      'Impact, sans-serif',
+      'Georgia, serif',
+      'Trebuchet MS, sans-serif',
+      'Palatino Linotype, serif',
+      'Tahoma, sans-serif'
+    ];
+
+    // Function to update the real-time clock and change font on click
+    function updateClock() {
+      const clockElement = document.getElementById('clock');
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      if (is24HourFormat) {
+        hours = hours.toString().padStart(2, '0');
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+      } else {
+        hours = (hours % 12 || 12).toString().padStart(2, '0');
+        clockElement.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+      }
+
+      // Change font on clock click
+      clockElement.onclick = function () {
+        currentFontIndex = (currentFontIndex + 1) % fontArray.length;
+        document.body.style.fontFamily = fontArray[currentFontIndex];
+      };
+    }
+
+    // Toggle time format between 12-hour and 24-hour
+    function toggleTimeFormat() {
+      is24HourFormat = !is24HourFormat;
+      updateClock(); // Update the clock immediately after toggling
+    }
+
+    // Function to set a random gradient
+    function setRandomGradient() {
+      const randomColor = () => '#' + Math.floor(Math.random() * 16777215).toString(16);
+      const color1 = randomColor();
+      const color2 = randomColor();
+      document.body.style.background = `linear-gradient(to right, ${color1}, ${color2})`;
+      document.body.style.animation = 'none'; // Reset animation
+      void document.body.offsetWidth; // Trigger reflow
+      document.body.style.animation = null; // Reapply animation
+    }
+
+    // Function to handle user-selected audio file
+    function handleFileSelect(event) {
+      const userAudio = document.getElementById('userAudio');
+      const fileInput = document.getElementById('fileInput');
+      const label = document.querySelector('label[for=fileInput]');
+
+      const file = event.target.files[0];
+
+      if (file) {
+        const objectURL = URL.createObjectURL(file);
+        userAudio.src = objectURL;
+        userAudio.play();
+        label.textContent = file.name; // Display the chosen file name
+      } else {
+        userAudio.src = ''; // Reset audio source
+        label.textContent = 'Choose File'; // Reset label text
+      }
+    }
+
+    // Call the functions on page load
+    window.onload = function () {
+      updateClock();
+      setInterval(updateClock, 1000);
+
+      const fileInput = document.getElementById('fileInput');
+      const gradientOptions = document.getElementById('gradientOptions');
+
+      fileInput.addEventListener('change', handleFileSelect);
+    };
+  </script>
+</body>
+</html>
