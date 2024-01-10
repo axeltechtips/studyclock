@@ -10,5 +10,9 @@ Minimalist Design: Uncluttered and calming, Studyclock lets your focus reign sup
 
 Credits to xyqn for the idea. 
 
-Our possible plans:
+## Our possible plans:
 Allowing you to sync your Spotify or YouTube account to start listening to your preferred tunes.
+
+# What we need to fix 
+Moving backgrounds 
+Clean Code
